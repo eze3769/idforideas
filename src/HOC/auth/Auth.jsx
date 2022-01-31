@@ -11,7 +11,7 @@ const Auth = ({children}) => {
 
 
     if(!auth){
-        return <Navigate to="/login" state={{memory:navigateMemo}}/>
+        return <Navigate to="/Login" state={{memory:navigateMemo}}/>
     }
     
     return (
@@ -21,4 +21,4 @@ const Auth = ({children}) => {
     )
 }
 
-export default Auth
+export default Auth;
