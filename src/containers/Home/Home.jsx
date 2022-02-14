@@ -4,14 +4,16 @@ import PostCard from '../../components/postCard/PostCard';
 
 const Home = () => {
   const [posts, setPosts] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(()=>{
     postsGET()
+    .then(res => res.json())
     .then((res)=>{
-      if (res.status=== 200){
+      console.log(res)
+      if (!res.error){
         setPosts(res)
-        setIsLoading(true)
+        setIsLoading(false)
       }
     })
     .catch((error) =>{
@@ -34,7 +36,7 @@ const Home = () => {
             :
             <>
             {
-              (typeof posts === Array && posts !== []) 
+              (posts !== []) 
               ?
               posts.map((el,index)=>{
                 return(

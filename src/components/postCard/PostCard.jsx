@@ -3,10 +3,10 @@ import React from 'react';
 const PostCard = ({id, image_url, created_at}) => {
   return (
   <div className='container'>
-      <div class="card">
+      <div className="card">
         <img src={image_url} alt={`post-${id}`} />
-        <div class="card-body">
-            {`Posted at ${created_at}`}
+        <div className="card-body">
+            {`Posted at ${Date(created_at).toString()}`}
         </div>
     </div>
   </div>

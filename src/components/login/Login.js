@@ -18,9 +18,12 @@ const Login = () => {
         e.preventDefault()
         setIsLoading(true)
         const body = {email, password}
+        console.log(body)
         loginPOST(body)
+        .then(res => res.json())
         .then((res)=>{
-            if(res.status === 200){
+            console.log(res)
+            if(!res.error){
                 setAuth(true)
                 setToken(res.access_token)
                 navigate('/')
@@ -34,13 +37,14 @@ const Login = () => {
             }
             
         })
-        .catch((res)=>{
+        .catch((err)=>{
             Swal.fire({
                 title: 'Error!',
                 text: "We can't login succefully. Please try again later!",
                 icon: 'error',
                 confirmButtonText: 'Ok'
               })
+              console.error("Error:",err)
         })
         .finally(()=>{
             setIsLoading(false)

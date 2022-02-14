@@ -20,10 +20,15 @@ function Signup() {
         }else{
             setIsLoading(true)
             setConfirmation(false)
-            const body = {name, email, password}
+            const body = {"name": name, 
+                "email":email,
+                "password": password}
+            console.log(body)
             registerPOST(body)
+            .then(res => res.json())
             .then(res =>{
-                if (res.status === 200){
+                console.log(res)
+                if (!res.error){
                     Swal.fire({
                         title: 'Success!',
                         text: 'You are succefully registered, wait for login redirection!',
@@ -38,6 +43,7 @@ function Signup() {
                         icon: 'error',
                         confirmButtonText: 'Ok'
                       })
+                      console.error(res.error)
                 }
                 
             })
