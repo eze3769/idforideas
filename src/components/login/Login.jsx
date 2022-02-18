@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 import Swal from 'sweetalert2';
-import 'animate.css';
 import { loginPOST } from '../../api/apiFetch';
 import { customContext } from '../../context/AppContext';
 import images from '../images/images';
@@ -149,18 +148,18 @@ const Login = () => {
 
                                 <div className='linksregister'>
 
-                                    <tr>
-                                        <td>
+                                    <div className='d-flex justify-content-between align-items-center'>
+                                        <div className='pt-3'>
                                             <label className ="check-input" id="gridCheck" style={{fontSize:'11px',color:'gray'}}> Remember Me
                                             <input type="checkbox" checked="checked" ></input>
                                             <span className="checkmark"></span>
                                             </label>
-                                        </td>
+                                        </div>
                                                                         
-                                        <td style={{textAlign:"end"}}>
+                                        <div>
                                             <span><Link to = '/signup' style={{fontSize:'11px', color:'#EF62A3',textDecoration:'none',textAlign:'right'}}>Forgot Password?</Link> </span>
-                                        </td>
-                                    </tr> 
+                                        </div>
+                                    </div> 
                                 </div>            
 
                             <div className = 'btnLogin'>
