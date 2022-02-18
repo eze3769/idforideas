@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 import Swal from 'sweetalert2';
@@ -11,9 +11,16 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const {setAuth, setToken} = useContext(customContext)
+    const {setAuth, setToken, auth} = useContext(customContext)
     const navigate = useNavigate()
 
+    useEffect(()=> {
+        if(auth){
+            navigate('/')
+        }
+
+    },[auth])
+    
     const handleLogin = (e) => {
         e.preventDefault()
         setIsLoading(true)
@@ -26,7 +33,6 @@ const Login = () => {
             if(!res.error){
                 setAuth(true)
                 setToken(res.access_token)
-                navigate('/')
             }else{
                 Swal.fire({
                     title: 'Error!',
@@ -46,9 +52,7 @@ const Login = () => {
               })
               console.error("Error:",err)
         })
-        .finally(()=>{
-            setIsLoading(false)
-        })
+        
     }
         return(
             <div className = 'containerPrincipal container d-flex justify-content-center'>

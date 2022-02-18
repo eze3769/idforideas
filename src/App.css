@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --pink-color: #EF62A3;
+  --arapey-font: var(--arapey-font);
+  --nunito-font: var(--nunito-font);
+}

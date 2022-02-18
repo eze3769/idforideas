@@ -4,7 +4,7 @@ import {customContext} from '../../context/AppContext'
 
 
 const Auth = ({children}) => {
-    const {auth} = useContext(customContext)
+    let {auth} = useContext(customContext)
     let location = useLocation()
     let navigateMemo = location.pathname
 
