@@ -82,20 +82,20 @@ function Signup() {
                         </div>
                     </div>
                     :
-                    <div className='containerPrincipal'>
+                    <div className='containerPrincipal d-flex flex-row flex-nowrap justify-content-center'>
 
-                        <div className='imageSignup'>         
-                            <img src={images.imageSignup} alt='SignupImage'/>
+                        <div className='imageSignup px-3'>         
+                            <img src={images.imageSignup} style={{ width: '45vw' }}alt='SignupImage'/>
                         </div>
 
-                        <div className='containerForm' id='containerForm'>
+                        <div className='containerForm p-5' id='containerForm' style={{width: '40%'}}>
 
                             <div className='imageLogo'>                   
                                 <img src={images.logoshore} alt='LogoShore'/>
                             </div>
                         
-                            <h1 className = 'titulo'>Sing Up into our community</h1>
-                            <p>You look exactly like someone who is in trends, you'r in!</p>
+                            <h1 className = 'title'>Sing Up into our community</h1>
+                            <p className='subtitle'>You look exactly like someone who is in trends, you'r in!</p>
                
                             <div className="d-grid gap-2">
                                 <span className = 'btnGoogle'>Continue with Google</span>

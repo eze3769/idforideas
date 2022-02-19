@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { customContext } from '../../context/AppContext'
 import logo from './logo.png'
+import userLogo from './user.svg'
 import './navBar.css'
 
 const NavBar = () => {
@@ -29,7 +30,7 @@ const NavBar = () => {
             </ul>
         </div>
     }
-    
+    <img className='user-logo' src={userLogo} alt="user logo" />
   </div>
 </nav>
   )

@@ -5,12 +5,11 @@
     box-sizing: border-box;
 }
 
-.container{
+.login-container{
     width: 110%;
     max-width: 1200px;
     overflow: hidden;
     transform: translateY(10%);
-    padding: 60px 0;
 }
 
 .containerPrincipal{

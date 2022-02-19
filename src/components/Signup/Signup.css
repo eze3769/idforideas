@@ -8,8 +8,7 @@
     box-sizing: border-box;
 }
 
-.container{
-    width: 110%;
+.signup-container{
     max-width: 1200px;
     overflow: hidden;
     transform: translateY(10%);
@@ -23,8 +22,12 @@
     flex-wrap: wrap;
 }
 
-.titulo{
+.title{
     font-family: 'Arapey', serif;
+    font-size:28px;
+}
+.subtitle{
+    font-size: 12px;
 }
 
 p{

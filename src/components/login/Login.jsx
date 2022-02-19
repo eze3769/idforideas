@@ -60,7 +60,7 @@ const Login = () => {
     }
         return(
 
-            <div className = 'container'>
+            <div className = 'login-container'>
                 {
                     isLoading?
                     <div className="d-flex justify-content-center mt-3">
@@ -111,7 +111,7 @@ const Login = () => {
                                     <div className='d-flex justify-content-between align-items-center'>
                                         <div className='pt-3'>
                                             <label className ="check-input" id="gridCheck" style={{fontSize:'11px',color:'gray'}}> Remember Me
-                                            <input type="checkbox" checked="checked" onChange={handleCheck}></input>
+                                            <input type="checkbox" onChange={handleCheck}></input>
                                             <span className="checkmark"></span>
                                             </label>
                                         </div>

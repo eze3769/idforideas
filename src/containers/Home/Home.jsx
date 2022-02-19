@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import { postsGET } from '../../api/apiFetch';
 import PostCard from '../../components/postCard/PostCard';
 import { customContext } from '../../context/AppContext';
+import Loader from '../../components/loader/Loader'
+import NavBar from '../../components/NavBar/NavBar';
 
 const Home = () => {
   const [posts, setPosts] = useState(null)
@@ -36,8 +38,7 @@ const Home = () => {
             confirmButton: 'button',
             image:"sweet_image"
         }
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+      }).then(() => {
         Swal.fire({
                     
           imageUrl: 'https://i.ibb.co/vd4WxNv/confirmation-Label.jpg',
@@ -77,7 +78,6 @@ const Home = () => {
     postsGET()
     .then(res => res.json())
     .then((res)=>{
-      console.log(res)
       if (!res.error){
         setPosts(res)
         setIsLoading(false)
@@ -87,19 +87,14 @@ const Home = () => {
       console.warn(error)
     })
   },[])
-
-  console.log(posts)
   return (
-      <>
+    <>
+    <NavBar />
         <div className='container'>
           {
             isLoading
             ?
-            <div className="d-flex justify-content-center mt-3">
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
+            <Loader />
             :
             <>
             {
@@ -116,7 +111,7 @@ const Home = () => {
             </>
           }
         </div>
-      </>
+    </>
   );
 };
 
