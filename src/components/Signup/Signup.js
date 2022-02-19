@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { registerPOST } from '../../api/apiFetch';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
 import images from '../images/images';
 import './Signup.css';
+import { customContext } from '../../context/AppContext';
 
 function Signup() {
     const [confirmation, setConfirmation] = useState(false)
@@ -12,8 +13,15 @@ function Signup() {
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+    const { setFirstLog, auth } = useContext(customContext)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if(auth) {
+            navigate('/login')
+        }
+    },[auth])
 
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -37,11 +45,11 @@ function Signup() {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                       })
-                    navigate('/login')
+                    setFirstLog(true)
                 }else{
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Error in registration. Please try again later!',
+                        text: 'Error in user or password',
                         icon: 'error',
                         confirmButtonText: 'Ok'
                       })

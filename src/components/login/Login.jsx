@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 import Swal from 'sweetalert2';
@@ -14,8 +14,18 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const {setAuth, setToken} = useContext(customContext)
+    const { setAuth, setToken, auth } = useContext(customContext)
     const navigate = useNavigate()
+
+    useEffect(()=> {
+        if(auth){
+            navigate('/')
+        }
+    },[auth])
+
+    const handleCheck = () => {
+
+    }
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -24,65 +34,16 @@ const Login = () => {
         loginPOST(body)
         .then((res)=>{
             if(res.status === 200){
-
-                Swal.fire({
-                    
-                    imageUrl: 'https://i.ibb.co/LRWZyXG/Inked-Oan1-LI.jpg',
-                    title:"Woho! We'r really happy to \n have you in our community!",
-                    text:"Now you can finde inspiration that will improve your looks! \n But first, let me give you a quick reminder of a few little things...",
-                    confirmButtonText:'<b>Continue<b>',
-                    confirmButtonColor:"#EF62A3",
-                    showCloseButton: true,
-                    showClass:
-                    {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass:
-                    {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    },
-                    imageAlt: 'errorLogin',
-                    customClass: {
-                        container:"sweet_container",
-                        
-                        title: "sweet_title",
-                        text:"sweet_text",
-                        confirmButton: 'button',
-                        image:"sweet_image"
-                    }
-                  })
-                
                 setAuth(true)
                 setToken(res.access_token)
-                navigate('/')
             }else{
-
                 Swal.fire({
-                    
-                    imageUrl: 'https://i.ibb.co/vd4WxNv/confirmation-Label.jpg',
-                    title:"Don't miss the trends check \n your email",
-                    text:"Confirm your user account",
-                    confirmButtonText:'<b>Continue<b>',
-                    confirmButtonColor:"#EF62A3",
-                    showCloseButton: true,
-                    showClass:
-                    {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass:
-                    {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    },
-                    imageAlt: 'errorLogin',
-                    customClass: {
-                        container:"sweet_container",
-                        
-                        title: "sweet_title",
-                        text:"sweet_text",
-                        confirmButton: 'button',
-                        image:"sweet_image"
-                    }
+                    title: 'Error!',
+                    text: "The user and/or password are wrong",
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
                   })
+                  setIsLoading(false)
             }
             
         })
@@ -93,10 +54,9 @@ const Login = () => {
                 icon: 'error',
                 confirmButtonText: 'Ok'
               })
+              setIsLoading(false)
         })
-        .finally(()=>{
-            setIsLoading(false)
-        })
+        
     }
         return(
 
@@ -151,7 +111,7 @@ const Login = () => {
                                     <div className='d-flex justify-content-between align-items-center'>
                                         <div className='pt-3'>
                                             <label className ="check-input" id="gridCheck" style={{fontSize:'11px',color:'gray'}}> Remember Me
-                                            <input type="checkbox" checked="checked" ></input>
+                                            <input type="checkbox" checked="checked" onChange={handleCheck}></input>
                                             <span className="checkmark"></span>
                                             </label>
                                         </div>

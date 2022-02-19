@@ -1,10 +1,77 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { postsGET } from '../../api/apiFetch';
 import PostCard from '../../components/postCard/PostCard';
+import { customContext } from '../../context/AppContext';
 
 const Home = () => {
   const [posts, setPosts] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const { isFirstLog, setFirstLog } = useContext(customContext)
+
+  useEffect(()=> {
+    if(isFirstLog){
+      Swal.fire({
+                    
+        imageUrl: 'https://i.ibb.co/LRWZyXG/Inked-Oan1-LI.jpg',
+        title:"Woho! We'r really happy to \n have you in our community!",
+        text:"Now you can finde inspiration that will improve your looks! \n But first, let me give you a quick reminder of a few little things...",
+        confirmButtonText:'<b>Continue<b>',
+        confirmButtonColor:"#EF62A3",
+        showCloseButton: true,
+        showClass:
+        {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass:
+        {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        imageAlt: 'errorLogin',
+        customClass: {
+            container:"sweet_container",
+            
+            title: "sweet_title",
+            text:"sweet_text",
+            confirmButton: 'button',
+            image:"sweet_image"
+        }
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        Swal.fire({
+                    
+          imageUrl: 'https://i.ibb.co/vd4WxNv/confirmation-Label.jpg',
+          title:"Don't miss the trends check \n your email",
+          text:"Confirm your user account",
+          confirmButtonText:'<b>Continue<b>',
+          confirmButtonColor:"#EF62A3",
+          showCloseButton: true,
+          showClass:
+          {
+              popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass:
+          {
+              popup: 'animate__animated animate__fadeOutUp'
+          },
+          imageAlt: 'errorLogin',
+          customClass: {
+              container:"sweet_container",
+              
+              title: "sweet_title",
+              text:"sweet_text",
+              confirmButton: 'button',
+              image:"sweet_image"
+          }
+        })
+      })
+      .finally(()=>{
+        setFirstLog(false)
+      })
+
+    }
+    
+  })
 
   useEffect(()=>{
     postsGET()
