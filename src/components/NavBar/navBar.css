@@ -1,11 +1,13 @@
+
 .nav-link{
     color: unset;
     color: var(--pink-color); 
 }
 .navbar-light .navbar-nav .nav-link{
     color: var(--pink-color)!important;
-    font-family: var(--arapey-font)!important;
+    font-family: 'Arapey';
     font-weight: 400;
     font-size: 24px;
+    margin: 0 10px;
 }
 

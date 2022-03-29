@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 import Swal from 'sweetalert2';
-import { loginPOST } from '../../api/apiFetch';
+import { loginPOST } from '../../sdk/apiFetch';
 import { customContext } from '../../context/AppContext';
 import images from '../images/images';
 import './Login.css';
@@ -21,7 +21,7 @@ const Login = () => {
         if(auth){
             navigate('/')
         }
-    },[auth])
+    },[auth, navigate])
 
     const handleCheck = () => {
 

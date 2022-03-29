@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { postsGET } from '../../api/apiFetch';
+import { dislikesPost, likesPost, postsGET } from '../../sdk/apiFetch';
 import PostCard from '../../components/postCard/PostCard';
 import { customContext } from '../../context/AppContext';
 import Loader from '../../components/loader/Loader'
@@ -9,7 +9,7 @@ import NavBar from '../../components/NavBar/NavBar';
 const Home = () => {
   const [posts, setPosts] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const { isFirstLog, setFirstLog } = useContext(customContext)
+  const { isFirstLog, setFirstLog } = useState(useContext(customContext))
 
   useEffect(()=> {
     if(isFirstLog){
@@ -81,12 +81,31 @@ const Home = () => {
       if (!res.error){
         setPosts(res)
         setIsLoading(false)
+        console.log(res)
       }
     })
     .catch((error) =>{
       console.warn(error)
     })
   },[])
+
+  
+  const likeHandle = (id, isLiked, setIsLiked) =>{
+    if (isLiked) {
+      dislikesPost(id)
+      .then(res => {
+        setIsLiked(false);
+      })
+      .catch(err => console.error(err))
+    }else{
+      likesPost(id)
+      .then(res => {
+        setIsLiked(true);
+      })
+      .catch(err => console.error(err))
+    }
+    
+  }
   return (
     <>
     <NavBar />
@@ -102,7 +121,7 @@ const Home = () => {
               ?
               posts.map((el,index)=>{
                 return(
-                <PostCard id={el.id} image_url={el.image_url} created_at={el.created_at} key={index} />
+                <PostCard id={el.id} image_url={el.image_url} created_at={el.created_at} likeHandle={likeHandle} key={index} />
                 )
               })
               :

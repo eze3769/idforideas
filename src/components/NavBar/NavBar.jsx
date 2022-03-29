@@ -19,18 +19,21 @@ const NavBar = () => {
         <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <a className="nav-link active pink-text" aria-current="page" href="#">View</a>
+                    <Link className="nav-link active pink-text" aria-current="page" to="">View</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link active pink-text" aria-current="page" href="#">Tags</a>
+                    <Link className="nav-link active pink-text" aria-current="page" to="">Tags</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link pink-text" href="#">About Fashion Like</a>
+                    <Link className="nav-link pink-text" to="">About Fashion Like</Link>
                 </li>
             </ul>
         </div>
     }
-    <img className='user-logo' src={userLogo} alt="user logo" />
+    <Link to="/posts">
+     <img className='user-logo px-3' src={userLogo} alt="user logo" />
+    </Link>
+    
   </div>
 </nav>
   )

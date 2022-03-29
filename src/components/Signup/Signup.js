@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { registerPOST } from '../../api/apiFetch';
+import { registerPOST } from '../../sdk/apiFetch';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
 import images from '../images/images';
@@ -21,7 +21,7 @@ function Signup() {
         if(auth) {
             navigate('/login')
         }
-    },[auth])
+    },[auth, navigate])
 
     const handleRegister = (e) =>{
         e.preventDefault();
