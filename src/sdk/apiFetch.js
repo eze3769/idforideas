@@ -13,12 +13,12 @@ const apiCall = async (endpoint, method, body) => {
 };
 
 export const loginPOST = (body) => {
-  return apiCall(`auth/login`, "POST", body);
+  return apiCall(`/login`, "POST", body);
 };
 
 export const registerPOST = (body) => {
   console.log(body);
-  return apiCall("auth/register", "POST", body);
+  return apiCall("/register", "POST", body);
 };
 
 export const postsGET = () => {
