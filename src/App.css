@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arapey&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arapey&display=swap");
 
 .App {
   text-align: center;
@@ -40,7 +40,7 @@
 }
 
 :root {
-  --pink-color: #EF62A3;
+  --pink-color: #ef62a3;
   --arapey-font: var(--arapey-font);
   --nunito-font: var(--nunito-font);
 }
