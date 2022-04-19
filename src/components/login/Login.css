@@ -1,0 +1,181 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-container{
+    width: 110%;
+    max-width: 1200px;
+    overflow: hidden;
+    transform: translateY(10%);
+}
+
+.containerPrincipal{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.imageLogin{
+    float: left;
+}
+
+.titulo{
+    font-family: var(--arapey-font);
+}
+
+p{
+   font-family: var(--nunito-font), sans-serif;
+   font-size: 15px;
+   padding: 15px 0;
+}
+
+h6{
+    font-family: var(--nunito-font), sans-serif;
+}
+
+.form-group{
+    font-family: var(--nunito-font), sans-serif;
+}
+
+.button{
+    font-family: var(--nunito-font), sans-serif;
+    text-align:center;
+    margin-top: 30px;
+    width: 150px;
+    margin: 5px;
+}
+
+.button:hover{
+    background-color: #e2b3c9;
+}
+
+.btnGoogle{
+    display:inline-block;
+    color:#A1A1A1;
+    text-align:center;
+    background-image: url(../images/btngoogle.svg);
+    border: 0px;
+    background-repeat:no-repeat;
+    background-size:40px 40px;
+    background-position:65px -3px;
+    background-color: white;
+    border:1px solid #ced4da;
+    border-radius:5px;
+    padding:5px 0 5px 20px;
+    
+}
+
+.linkregister{
+    margin: -10px 0;
+    display: flex;
+    
+}
+
+
+/*CheckBox*/
+
+/*creating the CheckBox*/ 
+#gridCheck input:checked ~ .checkmark{
+    background-color: #EF62A3;
+    border:1px solid #EF62A3;
+    border-radius:3px;
+    width: 15px;
+    height: 15px;
+    top: -1px
+}
+/*Adapting the container*/
+.check-input {
+
+    display: block;
+    margin-bottom: 12px;
+    font-size: 20px;
+    position: relative;
+    padding-left: 20.8px;
+}
+
+/*Hiding the checkbox by default*/
+.check-input input{
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+/*Creating a custom checkbox*/
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/*Change color on hover*/
+.check-input:hover input ~ .checkmark {
+    background-color: #e2b3c9;
+    border:1px solid #e2b3c9;
+
+}
+
+/*Creation hidden bookmark*/
+.checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/*Show bookmark on select*/
+.check-input input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/*marker style*/
+.check-input .checkmark:after {
+    left: 4px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*Alert*/
+.sweet_title{
+    font-family: var(--arapey-font);
+    font-size: 36px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.sweet_text{
+    font-family: var(--nunito-font), sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+.sweet_container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: left;
+    flex-wrap: wrap;
+}
+
+.sweet_image{
+    float: left !important;
+}
+
+
+
+
+
+
+
+

@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navigate, Routes, useLocation } from 'react-router-dom'
+import {customContext} from '../../context/AppContext'
+
 
 const Auth = ({children}) => {
-    //only for debug, delete after implement real auth
-    let auth = true
-
-    // const {auth} = useContext(appContext)
+    let {auth} = useContext(customContext)
     let location = useLocation()
     let navigateMemo = location.pathname
 
@@ -21,4 +20,4 @@ const Auth = ({children}) => {
     )
 }
 
-export default Auth
+export default Auth;
