@@ -1,157 +1,145 @@
-@import url('https://fonts.googleapis.com/css2?family=Arapey&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arapey&family=Nunito+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arapey&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arapey&family=Nunito+Sans:wght@300&display=swap");
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.signup-container{
-    max-width: 1200px;
-    overflow: hidden;
-    transform: translateY(10%);
-    padding: 60px 0;
+.signup-container {
+  max-width: 1200px;
+  overflow: hidden;
+  transform: translateY(10%);
+  padding: 60px 0;
 }
 
-.containerPrincipal{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+.containerPrincipal {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.title{
-    font-family: 'Arapey', serif;
-    font-size:28px;
+.title {
+  font-family: "Arapey", serif;
+  font-size: 28px;
 }
-.subtitle{
-    font-size: 12px;
-}
-
-p{
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 15px;
-    padding: 15px 0;
-}
- 
-h6{
-     font-family: 'Nunito Sans', sans-serif;
-}
- 
-.form-group{
-    font-family: 'Nunito Sans', sans-serif;
-
+.subtitle {
+  font-size: 12px;
 }
 
-.btnGoogle{
-    display:inline-block;
-    color:#A1A1A1;
-    text-align:center;
-    background-image: url(../images/btngoogle.svg);
-    border: 0px;
-    background-repeat:no-repeat;
-    background-size:40px 40px;
-    background-position:65px -3px;
-    background-color: white;
-    border:1px solid #ced4da;
-    border-radius:5px;
-    padding:5px 0 5px 20px;
-    
+p {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
+  padding: 15px 0;
 }
 
-.button{
-    font-family: 'Nunito Sans', sans-serif;
-    text-align:center;
-    margin-top: 30px;
-    width: 150px;
-    margin: 5px;
+h6 {
+  font-family: "Nunito Sans", sans-serif;
 }
 
-.button:hover{
-    background-color: #e2b3c9;
+.form-group {
+  font-family: "Nunito Sans", sans-serif;
 }
 
-.linkregister{
-    margin: -10px 0;
-    display: flex;
-    
+.btnGoogle {
+  display: inline-block;
+  color: #a1a1a1;
+  text-align: center;
+  background-image: url(../images/btngoogle.svg);
+  border: 0px;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: 65px -3px;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 5px 0 5px 20px;
 }
 
+.button {
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+  margin-top: 30px;
+  width: 150px;
+  margin: 5px;
+}
+
+.button:hover {
+  background-color: #e2b3c9;
+}
+
+.linkregister {
+  margin: -10px 0;
+  display: flex;
+}
 
 /*CheckBox*/
 
-/*creating the CheckBox*/ 
-#gridCheck input:checked ~ .checkmark{
-    background-color: #EF62A3;
-    border:1px solid #EF62A3;
-    border-radius:3px;
-    width: 15px;
-    height: 15px;
-    top: -1px
+/*creating the CheckBox*/
+#gridCheck input:checked ~ .checkmark {
+  background-color: #ef62a3;
+  border: 1px solid #ef62a3;
+  border-radius: 3px;
+  width: 15px;
+  height: 15px;
+  top: -1px;
 }
 /*Adapting the container*/
 .check-input {
-
-    display: block;
-    margin-bottom: 12px;
-    font-size: 20px;
-    position: relative;
-    padding-left: 20.8px;
+  display: block;
+  margin-bottom: 12px;
+  font-size: 20px;
+  position: relative;
+  padding-left: 20.8px;
 }
 
 /*Hiding the checkbox by default*/
-.check-input input{
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
+.check-input input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 /*Creating a custom checkbox*/
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
 }
 
 /*Change color on hover*/
 .check-input:hover input ~ .checkmark {
-    background-color: #e2b3c9;
-    border:1px solid #e2b3c9;
-
+  background-color: #e2b3c9;
+  border: 1px solid #e2b3c9;
 }
 
 /*Creation hidden bookmark*/
-.checkmark:after{
-    content: "";
-    position: absolute;
-    display: none;
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 /*Show bookmark on select*/
 .check-input input:checked ~ .checkmark:after {
-    display: block;
+  display: block;
 }
 
 /*marker style*/
 .check-input .checkmark:after {
-    left: 4px;
-    top: 0px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
-
-
-
-
