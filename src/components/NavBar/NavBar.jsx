@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { customContext } from "../../context/AppContext";
 import logo from "./logo.png";
 import userLogo from "./user.svg";
 import "./navBar.css";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
-  const { auth } = useContext(customContext);
+  const auth = useSelector((state) => state.auth.isLogged);
   return (
     <nav className="navbar navbar-light navbar-expand-lg bg-white">
       <div className="container-fluid">

@@ -3,11 +3,14 @@ import "./postCard.css";
 import like from "./like.png";
 import liked from "./liked.png";
 import bookmark from "./bookmark.png";
-import { likesGET } from "../../sdk/apiFetch";
+// import { allLikesGET } from "../../sdk/likes";
+import { useSelector } from "react-redux";
 
 const PostCard = ({ id, image_url, created_at, likeHandle }) => {
   const [isLiked, setIsLiked] = React.useState(false);
   const [likes, setLikes] = React.useState(0);
+
+  const token = useSelector((state) => state.auth.access_token);
 
   const date = new Date(Date.now() - new Date(created_at).getTime()).getTime();
   const days = Math.floor(date / 86400000);
@@ -17,10 +20,29 @@ const PostCard = ({ id, image_url, created_at, likeHandle }) => {
   );
 
   React.useEffect(() => {
-    likesGET(id)
-      .then((res) => res.json())
-      .then((res) => setLikes(res));
-  }, [id]);
+    // likesGET(id, token)
+    // .then(res => {
+    //   const data = res.json();
+    //   console.log(data)
+    //   if (data) {
+    //     setIsLiked(true);
+    //   } else {
+    //     setIsLiked(false);
+    //   }
+    // })
+
+    // try {
+    //   const response = allLikesGET(id)
+    //   const data =response.json();
+    //   console.log(data)
+    //   setLikes(data);
+    // }
+
+    // catch(err) {
+    //   console.error(err)
+    // }
+    setLikes(Math.floor(Math.random()*100));
+  }, [id, token]);
 
   return (
     <div className="container card-container">

@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { registerPOST } from "../../sdk/apiFetch";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import images from "../images/images";
 import "./Signup.css";
-import { customContext } from "../../context/AppContext";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRegister } from "../../features/auth/auth";
 
 function Signup() {
   const [confirmation, setConfirmation] = useState(false);
@@ -13,9 +12,10 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { setFirstLog, auth } = useContext(customContext);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth.isLogged)
 
   useEffect(() => {
     if (auth) {
@@ -30,41 +30,9 @@ function Signup() {
     } else {
       setIsLoading(true);
       setConfirmation(false);
-      const body = { name: name, email: email, password: password };
+      const body = { name: name, email: email, password: password, password_confirm: password };
       console.log(body);
-      registerPOST(body)
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          if (!res.error) {
-            Swal.fire({
-              title: "Success!",
-              text: "You are succefully registered, wait for login redirection!",
-              icon: "success",
-              confirmButtonText: "Ok",
-            });
-            setFirstLog(true);
-          } else {
-            Swal.fire({
-              title: "Error!",
-              text: "Error in user or password",
-              icon: "error",
-              confirmButtonText: "Ok",
-            });
-            console.error(res.error);
-          }
-        })
-        .catch((res) => {
-          Swal.fire({
-            title: "Error!",
-            text: "Error in registration. Please try again later!",
-            icon: "error",
-            confirmButtonText: "Ok",
-          });
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      dispatch(fetchRegister(body))
     }
   };
 

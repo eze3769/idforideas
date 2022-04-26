@@ -1,19 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Swal from "sweetalert2";
-import { loginPOST } from "../../sdk/apiFetch";
-import { customContext } from "../../context/AppContext";
 import images from "../images/images";
 import "./Login.css";
+import { fetchLogin } from "../../features/auth/auth";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setAuth, setToken, auth } = useContext(customContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth.isLogged)
 
   useEffect(() => {
     if (auth) {
@@ -27,30 +27,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     const body = { email, password };
-    loginPOST(body)
-      .then((res) => {
-        if (res.status === 200) {
-          setAuth(true);
-          setToken(res.access_token);
-        } else {
-          Swal.fire({
-            title: "Error!",
-            text: "The user and/or password are wrong",
-            icon: "error",
-            confirmButtonText: "Ok",
-          });
-          setIsLoading(false);
-        }
-      })
-      .catch((res) => {
-        Swal.fire({
-          title: "Error!",
-          text: "We can't login succefully. Please try again later!",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-        setIsLoading(false);
-      });
+    dispatch(fetchLogin(body))
   };
   return (
     <div className="login-container">
