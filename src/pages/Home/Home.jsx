@@ -6,13 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { listPosts } from "../../features/posts/posts";
 
 const Home = () => {
-
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.posts.loading);
   const posts = useSelector((state) => state.posts.posts);
 
   useEffect(() => {
-    dispatch(listPosts())
+    dispatch(listPosts());
   }, [dispatch]);
 
   return (

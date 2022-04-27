@@ -3,10 +3,21 @@ import { Link } from "react-router-dom";
 import logo from "./logo.png";
 import userLogo from "./user.svg";
 import "./navBar.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+// eslint-disable-next-line no-unused-vars
+import Dropdown from "bootstrap/js/dist/dropdown";
+import { logout } from "../../features/auth/auth";
+import { useCookies } from "react-cookie";
 
 const NavBar = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const auth = useSelector((state) => state.auth.isLogged);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    removeCookie(["user"]);
+    dispatch(logout());
+  };
   return (
     <nav className="navbar navbar-light navbar-expand-lg bg-white">
       <div className="container-fluid">
@@ -56,9 +67,32 @@ const NavBar = () => {
             </ul>
           </div>
         )}
-        <Link to="/posts">
-          <img className="user-logo px-3" src={userLogo} alt="user logo" />
-        </Link>
+        <div className="btn-group border-0">
+          <button
+            className="btn dropdown-toggle border-0"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img className="user-logo px-3" src={userLogo} alt="user logo" />
+          </button>
+          <ul
+            className="dropdown-menu dropdown-menu-left"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <li>
+              <Link className="dropdown-item" to="/posts">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <button className="dropdown-item" onClick={() => handleLogout()}>
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

@@ -41,7 +41,7 @@ const PostCard = ({ id, image_url, created_at, likeHandle }) => {
     // catch(err) {
     //   console.error(err)
     // }
-    setLikes(Math.floor(Math.random()*100));
+    setLikes(Math.floor(Math.random() * 100));
   }, [id, token]);
 
   return (

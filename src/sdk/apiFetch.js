@@ -6,8 +6,8 @@ export const apiCall = async (endpoint, method, body, token = undefined) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body:  body ? JSON.stringify(body) : undefined,
-    authentication: token ? token : undefined
+    body: body ? JSON.stringify(body) : undefined,
+    authentication: token ? token : undefined,
   };
   const res = await fetch(baseURL + endpoint, init);
   return res;
@@ -16,4 +16,4 @@ export const apiCall = async (endpoint, method, body, token = undefined) => {
 export const JSONResponse = (res) => {
   const data = res.json();
   return data;
-}
+};

@@ -11,11 +11,11 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth.isLogged)
+  const auth = useSelector((state) => state.auth.isLogged);
+  const isLoading = useSelector((state) => state.auth.loading);
 
   useEffect(() => {
     if (auth) {
@@ -28,11 +28,15 @@ function Signup() {
     if (password !== passwordConfirm) {
       setConfirmation(true);
     } else {
-      setIsLoading(true);
       setConfirmation(false);
-      const body = { name: name, email: email, password: password, password_confirm: password };
+      const body = {
+        name: name,
+        email: email,
+        password: password,
+        password_confirm: password,
+      };
       console.log(body);
-      dispatch(fetchRegister(body))
+      dispatch(fetchRegister(body));
     }
   };
 
