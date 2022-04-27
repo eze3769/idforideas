@@ -10,6 +10,7 @@ import { logout } from "../../features/auth/auth";
 import { useCookies } from "react-cookie";
 
 const NavBar = () => {
+  // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const auth = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();

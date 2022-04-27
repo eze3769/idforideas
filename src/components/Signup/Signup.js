@@ -33,7 +33,7 @@ function Signup() {
         name: name,
         email: email,
         password: password,
-        password_confirm: password,
+        password_confirmation: password,
       };
       console.log(body);
       dispatch(fetchRegister(body));
