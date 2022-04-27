@@ -1,12 +1,17 @@
+import React from "react";
 import "./App.css";
-import AppContext from "./context/AppContext";
 import Router from "./HOC/router/Router.jsx";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+import { CookiesProvider } from "react-cookie";
 
 function App() {
   return (
-    <AppContext>
-      <Router />
-    </AppContext>
+    <CookiesProvider>
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    </CookiesProvider>
   );
 }
 

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Navigate, Routes, useLocation } from "react-router-dom";
-import { customContext } from "../../context/AppContext";
 
 const Auth = ({ children }) => {
-  let { auth } = useContext(customContext);
+  const auth = useSelector((state) => state.auth.isLogged);
   let location = useLocation();
   let navigateMemo = location.pathname;
 
